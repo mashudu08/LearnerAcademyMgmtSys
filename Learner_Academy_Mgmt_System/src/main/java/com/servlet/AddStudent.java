@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.model.Classes;
+import com.model.Students;
 import com.service.DbOperations;
 
 /**
@@ -43,13 +44,16 @@ public class AddStudent extends HttpServlet {
 		
 		out.print("<h1 style='text-align:center; width: 100%; padding: 10px;'>Administrator Dashboard</h1>");
 		out.print("<br/>");
-		out.print("<p style='text-align:center; color:red; text-decoration:none;'> <a href='Dashboard'>Home</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp &nbsp; <a href='StudentInfo.html'>View Teachers</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp <a href='Login.html'>Logout</a> </p>");
+		out.print("<p style='text-align:center; color:red; text-decoration:none;'> <a href='Dashboard'>Home</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp <a href='Login.html'>Logout</a> </p>");
 		out.print("<hr/>");
 
+		
 		out.print("<form action='AddStudent' method='POST'");
 		out.print(
-				"style='text-align: center; border: 1px solid black; border-radius: 15px; padding:50px;background-color: lightgrey; margin:200px auto; width:800px;'>");
-		out.print("<h1 class=\"item\">Add Student</h1>");
+				"style='text-align: center; border: 1px solid black; border-radius: 15px; padding:50px;background-color: lightcyan; margin:50px auto; width:800px;'>");
+		out.print("<h1>Add Student</h1>");
+		out.print("<br/><br/>");
+		out.print("<br/>");
 		out.print("Student name : <input type='text' placeholder='Enter student name' name='sname' required>");
 		out.print("<br/><br/>");
 		out.print("Assign Class : <select name='classId'>");
@@ -58,7 +62,7 @@ public class AddStudent extends HttpServlet {
 		}
 		out.print("</select>");
 		out.print("<br/><br/>");
-		out.print("<input type='submit' value='Submit' class='btn'  />");
+		out.print("<input type='submit' value='Submit'/>");
 		out.print("<br/><br/>");
 		out.print("</form>");
 
@@ -66,18 +70,29 @@ public class AddStudent extends HttpServlet {
 		String classId = request.getParameter("classId");
 
 		try {
-			out.print(name + classId);
 			String res = dbo.AddStudent(name, Integer.parseInt(classId));
 
 			if (res.equals("Success")) {
-				response.sendRedirect("Dashboard");
+//				response.sendRedirect("Dashboard");
+				out.print("Student added successfully!");
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		
+		out.print("<h1>Students</h1>");
+		out.print("<table width='100%' border='1'>");
+		out.print("<tr><th>Student id </th><th>Student</th></tr>");
+		List<Students> studentDataList = dbo.AllStudents();
+
+		for (Students std : studentDataList) {
+			out.print("<tr>");
+			out.print("<td>" + std.getStdid() + "</td>");
+			out.print("<td>" + std.getStdname() + "</td>");
+			out.print("</tr>");
+		}
+		out.print("</table>");
 		
 	}
 

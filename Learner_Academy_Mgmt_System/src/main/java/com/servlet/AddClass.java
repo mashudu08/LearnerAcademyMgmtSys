@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.service.DbOperations;
+import com.model.Classes;
 import com.model.Subjects;
 
 /**
@@ -41,10 +42,16 @@ public class AddClass extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
+		out.print("<h1 style='text-align:center; width: 100%; padding: 10px;'>Administrator Dashboard</h1>");
+		out.print("<br/>");
+		out.print("<p style='text-align:center; color:red; text-decoration:none;'> <a href='Dashboard'>Home</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp <a href='Login.html'>Logout</a> </p>");
+		out.print("<hr/>");
 		
 		out.print("<form action='AddClass' method='POST'");
-		out.print("style='text-align: center; border: 1px solid black; border-radius: 15px; padding:50px;background-color: lightgrey; margin:200px auto; width:800px;'>");
-		out.print("<h1 class=\"item\">Add Class</h1>");
+		out.print("style='text-align: center; border: 1px solid black; border-radius: 15px; padding:50px;background-color: lightcyan; margin:50px auto; width:800px;'>");
+		out.print("<h1>Add Class</h1>");
+		out.print("<br/><br/>");
+		out.print("<br/>");
 		out.print("Class name : <input type='text' placeholder='Enter class name' name='cname' required>");
 		out.print("<br/><br/>");
 		out.print("Assign Subject : <select name='subjectId'>");
@@ -65,13 +72,26 @@ public class AddClass extends HttpServlet {
 			
 			if(res.equals("Success"))
 			{
-				response.sendRedirect("Dashboard");
+//				response.sendRedirect("Dashboard");
+				out.print("Class added successfully!");
 			}
 			
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		out.print("<table width='100%' border='1'>");
+		out.print("<tr><th>Class id</th><th>Classes</th></tr>");
+		List<Classes> classDataList = dbo.AllClasses();
+
+		for (Classes cls : classDataList) {
+			out.print("<tr>");
+			out.print("<td>" + cls.getCid() + "</td>");
+			out.print("<td>" + cls.getCname() + "</td>");
+			out.print("</tr>");
+		}
+		out.print("</table>");
 
 	}
 

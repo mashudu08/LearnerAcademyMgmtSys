@@ -31,12 +31,27 @@ public class Subjects extends HttpServlet {
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name = request.getParameter("txtSubject");
+		
 		HttpSession session = request.getSession();
 		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
+		out.print("<h1 style='text-align:center; width: 100%; padding: 10px;'>Administrator Dashboard</h1>");
+		out.print("<br />");
+		out.print("<p style=\"text-align:center;\"><a href='Dashboard'>Home</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; <a href='Login.html'>Logout</a></p>");
+		out.print("<hr />");
+		out.print("<form name='formSubject' action='Subjects' method='POST'");
+		out.print("style='text-align: center; border: 1px solid black; border-radius: 15px; padding:50px; background-color: lightcyan; margin:50px auto; width:800px;'>");
+		out.print("<h1>Add Subject</h1>");
+		out.print("<br/><br/>");
+		out.print("<br/>");
+		out.print("Subject name : <input type='text' placeholder='Enter subject' name='txtSubject' required>");
+		out.print("<br /><br />");
+		out.print("<input type='submit' value='Submit'/>");
+		out.print("</form>");
+		
+		String name = request.getParameter("txtSubject");
 		DbOperations dbo = new DbOperations();
 		
 		try {
@@ -44,7 +59,7 @@ public class Subjects extends HttpServlet {
 			
 			if(res.equals("Success"))
 			{
-				response.sendRedirect("Dashboard");
+				out.print("Subject added!");
 			}
 			
 		}

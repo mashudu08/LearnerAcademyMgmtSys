@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.model.Classes;
+import com.model.Teachers;
 import com.service.DbOperations;
 
 /**
@@ -41,11 +42,18 @@ public class AddTeacher extends HttpServlet {
 
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
+		
+		out.print("<h1 style='text-align:center; width: 100%; padding: 10px;'>Administrator Dashboard</h1>");
+		out.print("<br/>");
+		out.print("<p style='text-align:center; text-decoration:none;'> <a href='Dashboard'>Home</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp <a href='Login.html'>Logout</a> </p>");
+		out.print("<hr/>");
 
 		out.print("<form action='AddTeacher' method='POST'");
 		out.print(
-				"style='text-align: center; border: 1px solid black; border-radius: 15px; padding:50px;background-color: lightgrey; margin:200px auto; width:800px;'>");
-		out.print("<h1 class=\"item\">Add Teacher</h1>");
+				"style='text-align: center; border: 1px solid black; border-radius: 15px; padding:50px;background-color: lightcyan; margin:50px auto; width:800px;'>");
+		out.print("<h1>Add Teacher</h1>");
+		out.print("<br/><br/>");
+		out.print("<br/>");
 		out.print("Teacher name : <input type='text' placeholder='Enter teacher name' name='tname' required>");
 		out.print("<br/><br/>");
 		out.print("Assign Class : <select name='classId'>");
@@ -66,12 +74,26 @@ public class AddTeacher extends HttpServlet {
 			String res = dbo.AddTeacher(name, Integer.parseInt(classId));
 
 			if (res.equals("Success")) {
-				response.sendRedirect("Dashboard");
+//				response.sendRedirect("Dashboard");
+				out.print("Teacher added successfully!");
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		out.print("<table width='100%' border='1'>");
+		out.print("<tr><th>Teacher id</th><th>Teacher name</th><th>Class</th></tr>");
+		List<Teachers> teacherDataList = dbo.AllTeachers();
+
+		for (Teachers teach : teacherDataList) {
+			out.print("<tr>");
+			out.print("<td>" + teach.getTid() + "</td>");
+			out.print("<td>" + teach.getTname() + "</td>");
+			out.print("<td>" + teach.getCid() + "</td>");
+			out.print("</tr>");
+		}
+		out.print("</table>");
 
 	}
 

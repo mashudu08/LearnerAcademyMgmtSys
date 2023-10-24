@@ -50,7 +50,7 @@ public class DbOperations {
 
 		String res = "Error";
 		try {
-			String inscmd = ("INSERT INTO Teacher (tname, cid) VALUE (?,?)");
+			String inscmd = ("INSERT INTO Teachers (tname, cid) VALUE (?,?)");
 			PreparedStatement ps = conObj.prepareStatement(inscmd);
 			ps.setString(1, tname);
 			ps.setInt(2, cid);
@@ -96,6 +96,35 @@ public class DbOperations {
 
 	}
 
+	// Teacher master List
+//	public List<Teachers> TeacherMasterList(){
+//		List<Teachers> mt = new ArrayList();
+//		
+//		Teachers t = null;
+//		Classes c = null;
+//		try {
+//			PreparedStatement ps = conObj.prepareStatement("SELECT teachers.tname, classes.cname"+
+//					"FROM teachers" +
+//					"INNER JOIN classes ON teachers.cid = classes.cid");
+//			ResultSet rs = ps.executeQuery();
+//
+//			while (rs.next()) {
+//				t = new Teachers();
+//				c = new Classes();
+//				t.setTname(rs.getString("tname"));
+//				c.setCname(rs.getString("cname"));
+//				mt.add(t);
+//				
+//
+//			}
+//
+//		} catch (Exception ex) {
+//			ex.printStackTrace();
+//		}
+//
+//		return mt;
+//	}
+	
 	// Add Subject
 	public String AddSubjects(String subName) {
 
@@ -245,4 +274,6 @@ public class DbOperations {
 
 	}
 
+	
+	
 }

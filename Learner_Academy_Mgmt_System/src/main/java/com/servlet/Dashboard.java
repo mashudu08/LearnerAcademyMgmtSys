@@ -46,14 +46,13 @@ public class Dashboard extends HttpServlet {
 		out.print("<h1 style='text-align:center; width: 100%; padding: 10px;'>Administrator Dashboard</h1>");
 		out.print("<br/>");
 		out.print(
-				"<p style='text-align:center; color:red; text-decoration:none;'> <a href='Dashboard'>Home</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp &nbsp; <a href='StudentInfo.html'>Add Student</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp <a href='AddTeacher'>Add Teacher</a>  &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp <a href='AddSubject.html'>Add Subject</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp &nbsp; <a href='AddClass'>Add Class</a> &nbsp&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp <a href='Login.html'>Logout</a> </p>");
+				"<p style='text-align:center;'> <a href='Dashboard'>Home</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp &nbsp; <a href='AddStudent'>Students</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp <a href='AddTeacher'>Teachers</a>  &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp <a href='Subjects'>Subjects</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp &nbsp; <a href='AddClass'>Classes</a> &nbsp&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp <a href='Login.html'>Logout</a> </p>");
 		out.print("<hr/>");
-		out.print("<br/><br/>");
-
+		out.print("<br/>");
+		
+		out.print("<h3>Students</h3>");
 		out.print("<table width='100%' border='1'>");
-
-		out.print("<tr><th>Srudent id </th><th>Student</th></tr>");
-
+		out.print("<tr><th>Student id </th><th>Student</th></tr>");
 		List<Students> studentDataList = dbo.AllStudents();
 
 		for (Students std : studentDataList) {
@@ -62,30 +61,27 @@ public class Dashboard extends HttpServlet {
 			out.print("<td>" + std.getStdname() + "</td>");
 			out.print("</tr>");
 		}
-		out.print("</table");
-		out.print("<br/><br/>");
-		
+		out.print("</table>");
+		out.print("<br/>");
+
+		out.print("<h3>Teachers</h3>");
 		out.print("<table width='100%' border='1'>");
-
-		out.print("<tr><th>Teacher if</th><th>Subject </th><th>Teacher name</th></tr>");
-
+		out.print("<tr><th>Teacher id</th><th>Teacher name</th></tr>");
 		List<Teachers> teacherDataList = dbo.AllTeachers();
-
 
 		for (Teachers teach : teacherDataList) {
 			out.print("<tr>");
 			out.print("<td>" + teach.getTid() + "</td>");
-			out.print("<td>" + teach.getTname()+ "</td>");
+			out.print("<td>" + teach.getTname() + "</td>");
+//			out.print("<td>" + teach.getCid() + "</td>");
 			out.print("</tr>");
 		}
-		out.print("</table");
-		out.print("<br/><br/>");
-		
-		
+		out.print("</table>");
+		out.print("<br/>");
+
+		out.print("<h3>Classes</h3>");
 		out.print("<table width='100%' border='1'>");
-
 		out.print("<tr><th>Class id</th><th>Classes</th></tr>");
-
 		List<Classes> classDataList = dbo.AllClasses();
 
 		for (Classes cls : classDataList) {
@@ -94,24 +90,21 @@ public class Dashboard extends HttpServlet {
 			out.print("<td>" + cls.getCname() + "</td>");
 			out.print("</tr>");
 		}
-		out.print("</table");
-		out.print("<br/><br/>");
-	
-		out.print("</table");
-		
+		out.print("</table>");
+		out.print("<br/>");
+
+		out.print("<h3>Subjects</h3>");
 		out.print("<table width='100%' border='1'>");
-	
 		out.print("<tr><th>Subject id</th><th>Subject name</th></tr>");
-	
-	
 		List<Subjects> subjectDataList = dbo.AllSubjects();
-	
+
 		for (Subjects sub : subjectDataList) {
+			out.print("<tr>");
 			out.print("<td>" + sub.getSubid() + "</td>");
-			out.print("<td>" + sub.getSubname()+ "</td>");
+			out.print("<td>" + sub.getSubname() + "</td>");
 			out.print("</tr>");
 		}
-		out.print("</table");
+		out.print("</table>");
 	}
 
 }
