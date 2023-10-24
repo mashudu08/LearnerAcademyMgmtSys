@@ -3,7 +3,6 @@ package com.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,20 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.model.AdminDetails;
 import com.service.DbOperations;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class Subjects
  */
-@WebServlet("/Login")
-public class Login extends HttpServlet {
+@WebServlet("/Subjects")
+public class Subjects extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public Subjects() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,27 +31,28 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name= request.getParameter("txtAname");
-		String pwd = request.getParameter("txtPwd");
+		String name = request.getParameter("txtSubject");
 		HttpSession session = request.getSession();
 		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
 		DbOperations dbo = new DbOperations();
-		AdminDetails ad = dbo.AdminLogin(name, pwd);
 		
-		if(ad != null && name.equals(ad.getAdminUser()) && pwd.equals(ad.getAdminPwd())) 
-		{
-			session.setAttribute("user", "Administrator");
-			response.sendRedirect("Dashboard");
-		}
-		else {
-			out.println("<p style='text-align:center;'>Error, please check your username/password</p>");
-			RequestDispatcher rd = request.getRequestDispatcher("Login.html");
-			rd.include(request, response);
+		try {
+			String res = dbo.AddSubjects(name);
+			
+			if(res.equals("Success"))
+			{
+				response.sendRedirect("Dashboard");
+			}
 			
 		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
 	}
 
 }

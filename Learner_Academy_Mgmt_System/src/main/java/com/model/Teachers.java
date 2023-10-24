@@ -1,39 +1,51 @@
 package com.model;
 
 public class Teachers {
-	private int teacherId;
-	private String teachername;
+	private int tid;
+	private String tname;
+	private int cid;
 	
 	public Teachers() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Teachers(int teacherId, String teachername) {
+	public Teachers(int tid, String tname, int cid) {
 		super();
-		this.teacherId = teacherId;
-		this.teachername = teachername;
+		this.tid = tid;
+		this.tname = tname;
+		this.cid = cid;
 	}
 
-	public int getTeacherId() {
-		return teacherId;
+	public int getTid() {
+		return tid;
 	}
 
-	public void setTeacherId(int teacherId) {
-		this.teacherId = teacherId;
+	public void setTid(int tid) {
+		this.tid = tid;
 	}
 
-	public String getTeachername() {
-		return teachername;
+	public String getTname() {
+		return tname;
 	}
 
-	public void setTeachername(String teachername) {
-		this.teachername = teachername;
+	public void setTname(String tname) {
+		this.tname = tname;
+	}
+
+	public int getCid() {
+		return cid;
+	}
+
+	public void setCid(int cid) {
+		this.cid = cid;
 	}
 
 	@Override
 	public String toString() {
-		return "Teachers [teacherId=" + teacherId + ", teachername=" + teachername + "]";
+		return "Teachers [tid=" + tid + ", tname=" + tname + ", cid=" + cid + "]";
 	}
+
 	
+
 }

@@ -1,37 +1,50 @@
 package com.model;
 
 public class Classes {
-	private int classId;
-	private String classname;
+	private int cid;
+	private String cname;
+	private int subid;
 	
 	public Classes() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Classes(int classId, String classname) {
+	public Classes(int cid, String cname, int subid) {
 		super();
-		this.classId = classId;
-		this.classname = classname;
+		this.cid = cid;
+		this.cname = cname;
+		this.subid = subid;
+	}
+
+	public int getCid() {
+		return cid;
+	}
+
+	public void setCid(int cid) {
+		this.cid = cid;
+	}
+
+	public String getCname() {
+		return cname;
+	}
+
+	public void setCname(String cname) {
+		this.cname = cname;
 	}
 	
-	public int getClassId() {
-		return classId;
+	public int getSubid() {
+		return subid;
 	}
-	public void setClassId(int classId) {
-		this.classId = classId;
+
+	public void setSubid(int subid) {
+		this.subid = subid;
 	}
-	public String getClassname() {
-		return classname;
-	}
-	public void setClassname(String classname) {
-		this.classname = classname;
-	}
-	
+
 	@Override
 	public String toString() {
-		return "Classes [classId=" + classId + ", classname=" + classname + "]";
+		return "Classes [cid=" + cid + ", cname=" + cname + ", subid=" + subid + "]";
 	}
-	
+
 	
 }

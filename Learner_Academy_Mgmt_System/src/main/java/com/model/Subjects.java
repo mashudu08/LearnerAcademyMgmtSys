@@ -1,39 +1,40 @@
 package com.model;
 
 public class Subjects {
-	private int subjectId;
-	private String subjectname;
+	private int subid;
+	private String subname;
 	
 	public Subjects() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Subjects(int subjectId, String subjectname) {
+	public Subjects(int subid, String subname) {
 		super();
-		this.subjectId = subjectId;
-		this.subjectname = subjectname;
+		this.subid = subid;
+		this.subname = subname;
 	}
 
-	public int getSubjectId() {
-		return subjectId;
+	public int getSubid() {
+		return subid;
 	}
 
-	public void setSubjectId(int subjectId) {
-		this.subjectId = subjectId;
+	public void setSubid(int subid) {
+		this.subid = subid;
 	}
 
-	public String getSubjectname() {
-		return subjectname;
+	public String getSubname() {
+		return subname;
 	}
 
-	public void setSubjectname(String subjectname) {
-		this.subjectname = subjectname;
+	public void setSubname(String subname) {
+		this.subname = subname;
 	}
 
 	@Override
 	public String toString() {
-		return "Subjects [subjectId=" + subjectId + ", subjectname=" + subjectname + "]";
+		return "Subjects [subid=" + subid + ", subname=" + subname + "]";
 	}
+
 	
 }

@@ -20,6 +20,7 @@ public static Connection getConnection() {
 		{
 			ex.printStackTrace();
 		}
+		
 		return con;
 	}
 }

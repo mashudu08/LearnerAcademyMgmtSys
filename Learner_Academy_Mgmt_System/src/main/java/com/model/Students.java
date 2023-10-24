@@ -1,27 +1,31 @@
 package com.model;
 
+import java.util.List;
+
 public class Students {
 	
-	private int stdId;
+	private int stdid;
 	private String stdname;
+	private int cid;
 	
 	public Students() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Students(int stdId, String stdname) {
+	public Students(int stdid, String stdname, int cid) {
 		super();
-		this.stdId = stdId;
+		this.stdid = stdid;
 		this.stdname = stdname;
+		this.cid = cid;
 	}
 
-	public int getStdId() {
-		return stdId;
+	public int getStdid() {
+		return stdid;
 	}
 
-	public void setStdId(int stdId) {
-		this.stdId = stdId;
+	public void setStdid(int stdid) {
+		this.stdid = stdid;
 	}
 
 	public String getStdname() {
@@ -32,10 +36,18 @@ public class Students {
 		this.stdname = stdname;
 	}
 
+	public int getCid() {
+		return cid;
+	}
+
+	public void setCid(int cid) {
+		this.cid = cid;
+	}
+
 	@Override
 	public String toString() {
-		return "Students [stdId=" + stdId + ", stdname=" + stdname + "]";
+		return "Students [stdid=" + stdid + ", stdname=" + stdname + ", cid=" + cid + "]";
 	}
-	
+
 	
 }

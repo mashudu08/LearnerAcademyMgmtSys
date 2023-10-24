@@ -1,16 +1,16 @@
 package com.model;
 
-public class Admin {
+public class AdminDetails {
 	private int adminId;
 	private String adminUser;
 	private String adminPwd;
 	
-	public Admin() {
+	public AdminDetails() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Admin(int adminId, String adminUser, String adminPwd) {
+	public AdminDetails(int adminId, String adminUser, String adminPwd) {
 		super();
 		this.adminId = adminId;
 		this.adminUser = adminUser;
