@@ -51,7 +51,7 @@ public class Dashboard extends HttpServlet {
 		out.print("<br/>");
 		
 		out.print("<h3>Students</h3>");
-		out.print("<table width='100%' border='1'>");
+		out.print("<table style='width:800px;' border='1'>");
 		out.print("<tr><th>Student id </th><th>Student</th></tr>");
 		List<Students> studentDataList = dbo.AllStudents();
 
@@ -65,7 +65,7 @@ public class Dashboard extends HttpServlet {
 		out.print("<br/>");
 
 		out.print("<h3>Teachers</h3>");
-		out.print("<table width='100%' border='1'>");
+		out.print("<table style='width:800px;' border='1'>");
 		out.print("<tr><th>Teacher id</th><th>Teacher name</th></tr>");
 		List<Teachers> teacherDataList = dbo.AllTeachers();
 
@@ -73,14 +73,14 @@ public class Dashboard extends HttpServlet {
 			out.print("<tr>");
 			out.print("<td>" + teach.getTid() + "</td>");
 			out.print("<td>" + teach.getTname() + "</td>");
-//			out.print("<td>" + teach.getCid() + "</td>");
+//			out.print("<td>" + teach.getCname() + "</td>");
 			out.print("</tr>");
 		}
 		out.print("</table>");
 		out.print("<br/>");
 
 		out.print("<h3>Classes</h3>");
-		out.print("<table width='100%' border='1'>");
+		out.print("<table style='width:800px;' border='1'>");
 		out.print("<tr><th>Class id</th><th>Classes</th></tr>");
 		List<Classes> classDataList = dbo.AllClasses();
 
@@ -94,7 +94,7 @@ public class Dashboard extends HttpServlet {
 		out.print("<br/>");
 
 		out.print("<h3>Subjects</h3>");
-		out.print("<table width='100%' border='1'>");
+		out.print("<table style='width:800px;' border='1'>");
 		out.print("<tr><th>Subject id</th><th>Subject name</th></tr>");
 		List<Subjects> subjectDataList = dbo.AllSubjects();
 

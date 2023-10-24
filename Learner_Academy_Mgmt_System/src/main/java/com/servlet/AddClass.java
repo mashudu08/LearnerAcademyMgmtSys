@@ -81,7 +81,7 @@ public class AddClass extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		out.print("<table width='100%' border='1'>");
+		out.print("<table style='width:800px;' border='1'>");
 		out.print("<tr><th>Class id</th><th>Classes</th></tr>");
 		List<Classes> classDataList = dbo.AllClasses();
 

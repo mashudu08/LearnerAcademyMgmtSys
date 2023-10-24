@@ -70,7 +70,6 @@ public class AddTeacher extends HttpServlet {
 		String classId = request.getParameter("classId");
 
 		try {
-			out.print(name + classId);
 			String res = dbo.AddTeacher(name, Integer.parseInt(classId));
 
 			if (res.equals("Success")) {
@@ -82,7 +81,7 @@ public class AddTeacher extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		out.print("<table width='100%' border='1'>");
+		out.print("<table style='width:800px;' border='1'>");
 		out.print("<tr><th>Teacher id</th><th>Teacher name</th><th>Class</th></tr>");
 		List<Teachers> teacherDataList = dbo.AllTeachers();
 

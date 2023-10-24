@@ -82,7 +82,7 @@ public class AddStudent extends HttpServlet {
 		}
 		
 		out.print("<h1>Students</h1>");
-		out.print("<table width='100%' border='1'>");
+		out.print("<table style='width:800px;' border='1'>");
 		out.print("<tr><th>Student id </th><th>Student</th></tr>");
 		List<Students> studentDataList = dbo.AllStudents();
 
